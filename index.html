@@ -13,36 +13,51 @@
 </head>
 
 <body>
+
     <!-- Main -->
     <main class="main">
         <button id='burger'>☰</button>
-        <div class="before">
-            <!-- event types list -->
-            <div class=types_container>
-                <div class="types__title"><h3>Js Calendar</h3></div>
-                <div class="dark__mode"><h4>&#x1F441;Dark mode
-                <label>
-                    <input type="checkbox">
-                    <span class="check"></span>
-                </label>
-                </h4>
-                </div>
-                <div class="types__list">
-                    <ol class="types__ol">
-                        <li class="types__ol__li"> <input type="checkbox"> Meeting </li>
-                        <li class="types__ol__li"> <input type="checkbox">Call</li>
-                        <li class="types__ol__li"> <input type="checkbox">Coffe with</li>
-                        <li class="types__ol__li"> <input type="checkbox">Peer helping</li>
-                        <li class="types__ol__li__plus"><input type="button" value="+ New Type"></li>
-                    </ol>
-                </div>
-                <div class="add__type__btn"><input type="button" value="Add event"></div>
-            </div>
-        </div>
-        <!--  -->
+        <!-- Menu -->
+        <section class="menu menu--gray">
 
-        <div class="middle">
-            <!-- Calendar -->
+            <h1 class="menu__title">Js Calendar</h1>
+
+            <!-- Types -->
+            <div class="types">
+                <ol class="types__list">
+                    <li class="types__item">
+                        <label class="types__label">Dark mode</label>
+                        <input class="switch" type="checkbox" id="toggle_classes" />
+                    </li>
+                    <li class="types__item">
+                        <input type="checkbox">
+                        <label class="types__label">Meeting</label>
+                    </li>
+                    <li class="types__item">
+                        <input type="checkbox">
+                        <label class="types__label">Call</label>
+                    </li>
+                    <li class="types__item">
+                        <input type="checkbox">
+                        <label class="types__label">Coffe with</label>
+                    </li>
+                    <li class="types__item">
+                        <input type="checkbox">
+                        <label class="types__label">Peer helping</label>
+                    </li>
+                    <li class="types__item__plus">
+                        <input type="button" value="+ New Type">
+                    </li>
+                </ol>
+            </div><!-- Types -->
+
+            <div class="btn btn--add_type"><input type="button" value="Add event"></div>
+
+        </section><!-- Menu -->
+
+        <!-- Calendar -->
+        <section class="calendar">
+
             <!-- Nav -->
             <nav class="nav">
                 <ul class="nav__list">
@@ -62,8 +77,8 @@
                         <button class="btn btn--circle" id="next-month">&#62;</button>
                     </li>
                 </ul>
-            </nav>
-            <!-- Nav -->
+            </nav><!-- Nav -->
+
             <div class="calendar__week">
                 <div class="calendar__day">M</div>
                 <div class="calendar__day">T</div>
@@ -73,16 +88,41 @@
                 <div class="calendar__day">S</div>
                 <div class="calendar__day">S</div>
             </div>
-            <div class="calendar__dates" id="dates"></div>
+            <div class="calendar__dates" id="dates">
+                <!-- <button class="btn--modal" data-id="modal-example">Open modal</button> -->
+            </div>
+        </section>
+
+        <!-- Events -->
+        <section class="events"></section><!-- Events -->
+
+    </main><!-- Main -->
+
+    <!-- Modal -->
+    <div class="modal" id="modal-example">
+
+        <!-- Content container -->
+        <div class="modal__container slide-from-bottom">
+
+            <h4 class="modal__title">Modal title</h4>
+            <p class="modal__close"></p>
+
+            <!-- Content container -->
+            <div class="modal__content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, cumque.</p>
+
+                <!-- Footer container -->
+                <div class="modal__footer">
+                    <button class="btn btn--modal btn--red">Button</button>
+                    <button class="btn btn--modal btn--blue">Button</button>
+                    <button class="btn dark close-modal" data-id="modal-example">Close modal</button>
+                </div>
+            </div>
         </div>
-        <!-- Events list -->
-        <div class="after">
-            <div class="events"> </div>
-        </div>
-    </main>
-    <!-- Main -->
+    </div><!-- Modal -->
 
     <script src='assets/js/variables.js'></script>
+    <script src='assets/js/modals.js'></script>
     <script src='assets/js/calendar.js'></script>
     <script src='assets/js/events.js'></script>
     <script src='assets/js/help.js'></script>
