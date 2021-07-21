@@ -25,6 +25,7 @@
 @import "MODULE/types.css";
 @import "MODULE/switch.css";
 @import "MODULE/events.css";
+@import "MODULE/burger.css";
 
 /**
  * STATUS FOLDER
@@ -35,39 +36,3 @@
  * THEME FOLDER
  */
 @import "THEME/vars.css";
-
-
-@import "EVENT TYPE/eventType.css";
-@import "assets/css/EVENTS LIST/eventsList.css";
-
-
-
-/**
- * HAMBURGER
- */
- newClass{
- transform: translateX(0);
-	
- background-color: white;
-	
- transition: 0.2s;
-	
- transition-timing-function: ease-in-out;
-	
- width: 300px;
-	
- z-index: 10;}
-
-
- #burger {
-    box-sizing: border-box;
-    display: inline-block;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    font-weight: bold;
-    text-align: center;
-    user-select: none;
-  }
