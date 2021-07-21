@@ -1,5 +1,38 @@
+<<<<<<< Updated upstream
 //addEventListener on mouse click for opening modal on clas btn-modal
 document.addEventListener('click', function (e) {
+=======
+'use strict'
+
+var calcMonth = document.querySelector(".calendar__month");
+var addEventBtn = document.querySelector("#add-event");
+calcMonth.addEventListener("click", clickDate);
+addEventBtn.addEventListener("click", clickDate);
+
+const addEvent = (e) => {
+  //select right modal from id-data
+  let modal = document.querySelectorAll('#modal-example');
+  Array.prototype.forEach.call(modal, function (el) {
+
+    //add active class on modal
+    el.classList.add('active');
+  });
+}
+
+const showEventsList = (e) => {
+  //select right modal from id-data
+  let modal = document.querySelectorAll('#' + e.target.dataset.id);
+  Array.prototype.forEach.call(modal, function (el) {
+
+    //add active class on modal
+    el.classList.add('active');
+  });
+}
+
+function clickDate(e) {
+
+  const el = e.target;
+>>>>>>> Stashed changes
 
   //check is the right element clicked
   if (!e.target.matches('.btn--modal')) return;

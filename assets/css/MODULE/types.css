@@ -40,6 +40,16 @@ input[type="checkbox"]:checked ~ .check {
   background: rgb(129, 125, 125);
 }
 
+input#start[type="date"] {
+  display: flex;
+  width: 20%;
+}
+
+input#end[type="date"] {
+  display: flex;
+  width: 20%;
+}
+
 .check:before{
   content: '';
   position: absolute;

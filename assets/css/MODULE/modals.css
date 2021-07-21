@@ -123,6 +123,10 @@
   max-height: 100%;
 }
 
+.calendar__start__end {
+  display: flex;
+}
+
 hr {
   width: 100%;
   background-color: rgb(95, 95, 95);
@@ -136,13 +140,29 @@ hr {
 
 .modal__item{
   padding: 2%;
+  border-bottom: 1px solid black;
 
 }
 
 .modal__item--hours {
   display: flex;
   padding: 2%;
+  flex-direction: column;
   }
+
+  .calendar__start__end{
+    display: flex;
+    padding: 2%;
+    flex-direction: row;
+    padding-bottom: 0%;
+  }
+
+.calendar__start__end--two{
+  display: flex;
+  padding: 2%;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+}
 
 .modal__content .m-footer{
   display: flex;
