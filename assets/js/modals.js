@@ -1,20 +1,52 @@
-//addEventListener on mouse click for opening modal on clas btn-modal
-document.addEventListener('click', function (e) {
+'use strict'
 
-  //check is the right element clicked
-  if (!e.target.matches('.btn--modal')) return;
-  else {
+var calendarMain = document.querySelector(".calendar__main");
+var addEventBtn = document.querySelector("#add-event");
+var cancelModal = document.getElementById('modalCancel');
+var saveModal = document.getElementById('modalSave');
 
-    //select right modal from id-data
-    var modal = document.querySelectorAll('#' + e.target.dataset.id);
-    Array.prototype.forEach.call(modal, function (el) {
+calendarMain.addEventListener("click", clickDate);
+addEventBtn.addEventListener("click", clickDate);
 
-      //add active class on modal
-      el.classList.add('active');
-    });
-  }
-});
+const addEvent = (e) => {
+  //select right modal from id-data
+  let modal = document.querySelectorAll('#modal-example');
+  Array.prototype.forEach.call(modal, function (el) {
 
+    //add active class on modal
+    el.classList.add('active');
+  });
+}
+
+const showEventsList = (e) => {
+  //select right modal from id-data
+  let modal = document.querySelectorAll('#' + e.target.dataset.id);
+  Array.prototype.forEach.call(modal, function (el) {
+
+    //add active class on modal
+    el.classList.add('active');
+  });
+}
+
+function clickDate(e) {
+
+  const el = e.target;
+
+  if (!el.matches(".btn--modal")) return null;
+
+  //get the day selected
+  dateSelected = el.dataset.id;
+
+  //clear form inputs
+  document.querySelector(`#title`).value = '';
+  document.querySelector(`#description`).value = '';
+  (dateSelected) ? document.querySelector(`#startDate`).value = dateSelected : document.querySelector(`#startDate`).value = '';
+  document.querySelector(`#startTime`).value = '';
+  document.querySelector(`#endDate`).value = '';
+  document.querySelector(`#endTime`).value = '';
+
+  addEvent(e);
+}
 
 //addEventListener on mouse click for closing modal on modal dark background
 document.addEventListener('click', function (e) {
@@ -23,7 +55,7 @@ document.addEventListener('click', function (e) {
   if (!e.target.matches('.modal')) return;
   else {
 
-    // if modal have do-not-close class it will not close it self on background click
+    //if modal have do-not-close class it will not close it self on background click
     if (e.target.classList.contains('do-not-close')) return;
     else {
 
@@ -60,3 +92,10 @@ document.addEventListener('click', function (e) {
     e.target.parentElement.parentElement.classList.remove('active');
   }
 });
+
+//close modal
+cancelModal.addEventListener('click', closeModal);
+
+function closeModal() {
+  document.getElementById('modal-example').classList.remove('active');
+};

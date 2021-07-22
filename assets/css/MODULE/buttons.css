@@ -1,4 +1,4 @@
-/**
+/*
  * MODULE - BUTTONS
  */
 
@@ -8,18 +8,29 @@
   padding: 10px 5px;
   border-radius: 5px;
   font-size: 14px;
-  margin: 5px;
   cursor: pointer;
   outline: none;
   transition: all 0.3s ease-in-out;
 }
 
-.btn:hover{
+.btn--full_width{
+  width: 100%;
+  height: 40px;
+  border-radius: 20px;
 }
 
-.btn--word{}
+.btn--black{
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+}
 
-.btn--circle{}
+.btn--black--modal{
+  width: 20%;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+}
 
 .btn--red{
   background-color: rgb(231, 97, 97);
@@ -30,22 +41,10 @@
   background-color: rgb(224, 131, 131);
 }
 
-.btn--blue{
-  background-color: rgb(56, 129, 224);
-  color: #fff;
-}
-
-.btn--blue:hover{
-  background-color: rgb(108, 163, 236);
-}
-
-.btn--dark{
-  background-color: #262626;
-  color: #fff;
-}
-
-.btn--dark:hover{
-  background-color: #363636;
+.btn--word:hover,
+.btn--circle:hover{
+  background-color: black;
+  color: white;
 }
 
 .btn--add_type{
@@ -57,10 +56,31 @@
   width: 15em;
   color: rgb(255, 255, 255);
   background-color: black;
+  cursor: pointer;
+  width: 50%;
+}
+
+.modal__buttons button:hover{
+  border-color: rgb(129, 129, 129);
+}
+
+@media all and (max-width:30em){
+  .modal__buttons button{
+    display: block;
+    margin: 0.2em auto;
+  }
 }
 
 @media (max-width: 767px) {
   .btn{
     margin: 5px;
+  }
+}
+
+
+@media all and (max-width:30em){
+  .modal__buttons button{
+    display :block;
+    margin: 0.2em auto;
   }
 }

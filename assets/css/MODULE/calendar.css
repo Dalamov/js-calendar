@@ -9,6 +9,19 @@
   height: 100%;
 }
 
+.calendar__header{
+  padding: 0 20px;
+  min-height: 90px;
+  max-height: 90px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.calendar__main{
+  height: 100%;
+  padding: 15px 15px 60px;
+}
+
 .calendar__week,
 .calendar__dates {
   display: grid;
@@ -16,8 +29,12 @@
   width: 100%;
 }
 
-.calendar__dates {
-  height: 100%;
+.calendar__week{
+  padding-bottom: 10px;
+}
+
+.calendar__day{
+  color: grey;
 }
 
 .calendar__day,
@@ -25,6 +42,14 @@
   text-align: center;
   border: 1px solid white;
   padding: 5px;
+}
+
+.calendar__dates {
+  height: 100%;
+}
+
+.calendar__date{
+  margin: 5px;
 }
 
 .calendar__date:hover:not(.calendar__prev){

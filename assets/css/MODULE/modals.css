@@ -25,6 +25,7 @@
   max-width: 500px;
   min-height: 150px;
   height: auto;
+  padding: 20px;
   margin: 0 auto;
   position: relative;
   border-radius: 5px;
@@ -64,14 +65,13 @@
 */
 
 .modal__title{
-  background-color: #262626;
   display: flex;
   align-items: center;
   justify-content: center;
   height: auto;
   width: 100%;
   margin: 0;
-  padding: 10px 20px;
+  padding: 0 0 20px 0;
   border-radius: 5px 5px 0 0;
   color: #f2f2f2;
   font-weight: 500;
@@ -117,21 +117,89 @@
 
 .modal__content{
   display: block;
-  background-color: #fff;
-  min-height: 150px;
   width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 20px;
+  height: 400px;
+  max-height: 100%;
   border-radius: 0 0 5px 5px;
 }
 
-.modal__content .m-footer{
+.modal__text--title{
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 15px;
+}
+
+/* .form{
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  max-height: 100%;
+} */
+
+.modal__item{
+  padding: 15px;
+  border-bottom: 1px solid black;
+  font-weight: 400;
+}
+
+.modal__item--title{
+  font-weight: 400;
+}
+
+.modal__text {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal__input--text{
+  width: calc(100% - 24px);
+  font-size: 16px;
+  background-color: transparent;
+  border: 0;
+}
+
+.modal__label{
+  font-size: 16px;
+}
+
+label#modal__item--description-text {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+  padding-top: 3%;
+}
+
+.modal__input{
+  cursor: pointer;
+}
+
+.modal__input--date,
+.modal__input--time {
+  border-radius: 50px;
+  border: none;
+  background-color: lightgray;
+  padding: 6px 12px;
+}
+
+.modal__input--date{
+  margin-right: 10px;
+}
+
+.modal__item--description{
+  display: flex;
+  font-weight: 300;
+}
+
+.modal__item--hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "a b c d";
+  padding: 2%;
+  font-weight: 400;
+}
+
+.modal__footer{
+  padding-top: 15px;
+  display: flex;
 }
 
 .modal.active{
