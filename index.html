@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
@@ -18,83 +20,122 @@
     <main class="main">
 
         <!-- Menu -->
-        <section class="menu menu--gray">
+        <section class="menu border-right" id="menu">
 
-            <h1 class="menu__title">Js Calendar</h1>
+            <header class="menu__header border-bottom">
+                <h1 class="menu__title">Js Calendar</h1>
+            </header>
 
             <!-- Types -->
-            <div class="types">
-                <ol class="types__list">
-                    <li class="types__item">
+            <div class="menu__main types">
+                <ul class="types__list">
+                    <li class="types__item justify-content-between border-bottom">
                         <label class="types__label">Dark mode</label>
                         <input class="switch" type="checkbox" id="toggle_classes" />
                     </li>
+                </ul>
+                <ul class="types__list">
                     <li class="types__item">
-                        <input type="checkbox">
+                        <div class="types__color bg--red"></div>
                         <label class="types__label">Meeting</label>
                     </li>
                     <li class="types__item">
-                        <input type="checkbox">
+                        <div class="types__color bg--blue"></div>
                         <label class="types__label">Call</label>
                     </li>
                     <li class="types__item">
-                        <input type="checkbox">
+                        <div class="types__color bg--green"></div>
                         <label class="types__label">Coffe with</label>
                     </li>
                     <li class="types__item">
-                        <input type="checkbox">
+                        <div class="types__color bg--yellow"></div>
                         <label class="types__label">Peer helping</label>
                     </li>
-                    <li class="types__item__plus">
-                        <input type="button" value="+ New Type">
-                    </li>
-                </ol>
+                </ul>
             </div><!-- Types -->
 
-            <div class="btn btn--add_type"><input type="button" value="Add event"></div>
+            <footer class="menu__footer">
+                <button id="add-event" class="btn btn--primary btn--modal w-100" data-id="modal-example">
+                    Add event
+                </button>
+            </footer>
 
         </section><!-- Menu -->
 
         <!-- Calendar -->
         <section class="calendar">
 
-            <!-- Nav -->
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <!-- <button class="btn btn--burger">&#9776;</button> -->
-                    </li>
-                    <li class="nav__item nav__item--full">
-                        <span id="month">Jan</span> <span id="year">2021</span>
-                    </li>
-                    <li class="nav__item">
-                        <button class="btn btn--word">Today</button>
-                    </li>
-                    <li class="nav__item">
-                        <button class="btn btn--circle" id="prev-month">&#60;</button>
-                    </li>
-                    <li class="nav__item">
-                        <button class="btn btn--circle" id="next-month">&#62;</button>
-                    </li>
-                </ul>
-            </nav><!-- Nav -->
+            <header class="calendar__header border-bottom">
+                <div class="calendar__title w-100">
+                    <button class="burger" id='burger'>☰</button>
+                    <span id="month">January</span><span id="year">2021</span>
+                </div>
 
-            <div class="calendar__week">
-                <div class="calendar__day">M</div>
-                <div class="calendar__day">T</div>
-                <div class="calendar__day">W</div>
-                <div class="calendar__day">T</div>
-                <div class="calendar__day">F</div>
-                <div class="calendar__day">S</div>
-                <div class="calendar__day">S</div>
+                <!-- Nav -->
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <button class="btn btn--secondary" id="today-month">Today</button>
+                        </li>
+                        <li class="nav__item">
+                            <button class="btn btn--circle" id="prev-month">&#60;</button>
+                        </li>
+                        <li class="nav__item">
+                            <button class="btn btn--circle" id="next-month">&#62;</button>
+                        </li>
+                    </ul>
+                </nav><!-- Nav -->
+            </header>
+
+            <div class="calendar__main">
+                <div class="calendar__week">
+                    <div class="calendar__day">M</div>
+                    <div class="calendar__day">T</div>
+                    <div class="calendar__day">W</div>
+                    <div class="calendar__day">T</div>
+                    <div class="calendar__day">F</div>
+                    <div class="calendar__day">S</div>
+                    <div class="calendar__day">S</div>
+                </div>
+                <div class="calendar__dates" id="dates">
+                </div>
             </div>
-            <div class="calendar__dates" id="dates">
-                <!-- <button class="btn--modal" data-id="modal-example">Open modal</button> -->
-            </div>
-        </section>
+        </section><!-- Calendar -->
 
         <!-- Events -->
-        <section class="events"></section><!-- Events -->
+        <section class="events">
+
+            <header class="events__header border-bottom">
+                <h2 class="events__title">Sunday 07</h2>
+            </header>
+
+            <div class="events__main" id="eventsDay">
+                <div class="event">
+                    <div class="event__item">
+                        <p class="event__title">Event Title</p>
+                        <span class="start__time">hh:mm</span><span> - </span>
+                        <span class="end__time">hh:mm</span>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <div class="event__item">
+                        <p class="event__title">Event Title</p>
+                        <span class="start__time">hh:mm</span><span> - </span>
+                        <span class="end__time">hh:mm</span>
+                    </div>
+                </div>
+
+                <div class="event">
+                    <div class="event__item">
+                        <p class="event__title">Event Title</p>
+                        <span class="start__time">hh:mm</span><span> - </span>
+                        <span class="end__time">hh:mm</span>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- Events -->
 
     </main><!-- Main -->
 
@@ -102,47 +143,82 @@
     <div class="modal" id="modal-example">
 
         <!-- Content container -->
-        <div class="modal__container slide-from-bottom">
+        <div class="modal__container slide-from-bottom bg--white">
 
-            <h4 class="modal__title">Create new event</h4>
-            <p class="modal__close" ></p>
-            <!-- Content container -->
+            <!-- Modal header -->
+            <div class="modal__header">
+                <h4 class="modal__title">Create new event</h4>
+                <p class="modal__close"></p>
+            </div><!-- Modal header -->
+
+            <!-- Modal content -->
             <div class="modal__content">
-                <div class="modal__items">
-                    <label class="modal__item">Title</label>
-<<<<<<< Updated upstream
-                    <hr>
-                    <label class="modal__item--hours">Start <br> End</label>
-                    <hr>
-                    <label class="modal__item">Repeat</label>
-                    <hr>
-=======
-                    <label class="modal__item--hours">
-                    <label class="calendar__start__end" for="start"> Start date:<input type="date" id="start">
-                        <input id="appt-time" type="time" name="appt-time" value="13:30">
-                    </label>
-                    <label class="calendar__start__end--two"  for="end">end date:<input type="date" id="start">
-                        <input id="appt-time" type="time" name="appt-time" value="13:30">
-                    </label>
-                    <label class="modal__item"> &#10227; Repeat</label>
->>>>>>> Stashed changes
-                    <label class="modal__item">Task</label>
-                    <label class="modal__item">Reminder</label>
-                    <label class="modal__item">Description</label>
-                </div>
-                <div class="modal__buttons">
-                    <button class="modal__save__btn"> Save</button>
-                    <button class="modal__cancel__btn"> Cancel</button>
-                </div>
-            </div>
+
+                <!-- Form -->
+                <form class="form" onsubmit="return false">
+                    <div class="form__item form__item--title border-bottom">
+                        <i class="fas fa-tasks"></i>
+                        <input type="text" class="form__input form__input--text" id="title" name="title"
+                            placeholder="Title" required minlength="4" maxlength="20" size="20" />
+                    </div>
+                    <div class="form__item form__item--hours border-bottom">
+                        <label for="start" class="form__label">Start date:</label>
+                        <input class="form__input form__input--date" type="date" id="startDate" name="start" value=""
+                            min="2021-01-01" max="2023-12-31">
+                        <input class="form__input form__input--time" type="time" id="startTime" name="start__time"
+                            required>
+                    </div>
+                    <div class="form__item form__item--hours border-bottom">
+                        <label for="end" class="form__label">End date</label>
+                        <input class="form__input form__input--date" type="date" id="endDate" name="end" value=""
+                            min="2021-01-01" max="2023-12-31">
+                        <input class="form__input form__input--time" type="time" id="endTime" name="end__time" required>
+                    </div>
+                    <div class="form__item">
+                        <i class="fas fa-tasks"></i>
+                        <label class="form__label">Event type</label>
+                        <select name="select" class="form__select" id="type">
+                            <option value="Meeting">Meeting</option>
+                            <option value="Call">Call</option>
+                            <option value="Coffee with">Coffee with</option>
+                            <option value="Peer Helping">Peer Helping</option>
+                        </select>
+                    </div>
+                    <div class="form__item">
+                        <i class="far fa-bell"></i>
+                        <label class="form__label">Reminder</label>
+                        <select name="select" class="form__select" id="reminder">
+                            <option value="None">None</option>
+                            <option value="10 minutes before">10 minutes before</option>
+                            <option value="30 minutes before">30 minutes before</option>
+                            <option value="1 hour before">1 hour before</option>
+                        </select>
+                    </div>
+                    <div class="form__item">
+                        <i class="fas fa-align-left"></i>
+                        <input type="text" class="form__input form__input--text" id="description" name="description"
+                            placeholder="Description" maxlength="48" />
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal__footer">
+                        <input type="submit" value="Save" class="btn btn--primary" id="modalSave" />
+                        <button class="btn btn--primary" id="modalCancel">Cancel</button>
+                    </div><!-- Modal footer -->
+                </form><!-- Form -->
+
+            </div><!-- Modal content -->
         </div>
     </div><!-- Modal -->
 
+    <script src='assets/js/utils.js'></script>
     <script src='assets/js/variables.js'></script>
     <script src='assets/js/modals.js'></script>
     <script src='assets/js/calendar.js'></script>
     <script src='assets/js/events.js'></script>
-    <script src='assets/js/help.js'></script>
+    <script src='assets/js/validator.js'></script>
+    <script src='assets/js/burger.js'></script>
+    <script src='assets/js/initialize.js'></script>
 </body>
 
 </html>

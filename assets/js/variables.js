@@ -1,18 +1,49 @@
 'use strict';
 
-const monthNames = ['January', 'Febrary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+//get the today date
+var todayDate = new Date();
+var todayDay = pad(todayDate.getDate())
+var todayMonth = pad(todayDate.getMonth() + 1);
+var todayYear = todayDate.getFullYear();
+var today = todayYear + "-" + todayMonth + "-" + todayDay;
+let tdMonth = todayDate.getMonth();
+
+
+
+//get the current date
 const currentDate = new Date();
 const currentDay = currentDate.getDate();
-const currentMonth = currentDate.getMonth();
-const currentYear = currentDate.getFullYear();
+var currentMonth = currentDate.getMonth();
+var currentYear = currentDate.getFullYear();
 
 let dates = document.getElementById('dates');
 let month = document.getElementById('month');
 let year = document.getElementById('year');
 
-let prevMonthDOM = document.getElementById('prev-month');
-let nextMonthDOM = document.getElementById('next-month');
+const prevMonthDOM = document.getElementById('prev-month');
+const nextMonthDOM = document.getElementById('next-month');
+const todayMonthDOM = document.getElementById('today-month');   // marcel TODAY BUTTON 
 
-prevMonthDOM.addEventListener('click', () => lastMonth());
-nextMonthDOM.addEventListener('click', () => lastMonth());
+prevMonthDOM.addEventListener('click', () => goToPrevMonth());
+nextMonthDOM.addEventListener('click', () => goToNextMonth());
+todayMonthDOM.addEventListener('click', () => goToTodayMonth());    // marcel TODAY BUTTON 
+
+//get the eventsNotes in localStorage
+var eventsNotes = JSON.parse(localStorage.getItem('events'));
+var eventNote = {};
+
+//if not eventsNotes create empty array
+(!eventsNotes) ? eventsNotes = new Array() : null;
+
+const form = document.querySelector('.form');
+let eventsDay = document.getElementById('eventsDay');
+
+var dateSelected;
+
+//modals variable
+var calendarMain = document.querySelector(".calendar__main");
+var addEventBtn = document.querySelector("#add-event");
+var cancelModal = document.getElementById('modalCancel');
+var saveModal = document.getElementById('modalSave');

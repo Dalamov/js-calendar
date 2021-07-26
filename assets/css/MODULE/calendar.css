@@ -5,8 +5,30 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: calc(100% - 500px);
   height: 100%;
+}
+
+.calendar__header{
+  padding: 0 20px;
+  min-height: 90px;
+  max-height: 90px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.calendar__title{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+.calendar__main{
+  height: 100%;
+  padding: 15px 15px 60px;
 }
 
 .calendar__week,
@@ -16,15 +38,40 @@
   width: 100%;
 }
 
-.calendar__dates {
-  height: 100%;
+.calendar__week{
+  padding-bottom: 10px;
+}
+
+.calendar__day{
+  color: grey;
 }
 
 .calendar__day,
 .calendar__date{
   text-align: center;
   border: 1px solid white;
-  padding: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.calendar__dates {
+  height: 100%;
+}
+
+.calendar__date{
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar__plus{
+  visibility: hidden;
+}
+
+.calendar__date:hover .calendar__plus{
+  visibility: visible;
 }
 
 .calendar__date:hover:not(.calendar__prev){
@@ -37,9 +84,22 @@
   color: white;
 }
 
+.dot{
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: cadetblue;
+}
+
 .calendar__prev{
   margin: 5px;
   color: gray;
+}
+
+@media (max-width: 991px) {
+  .calendar {
+    width: calc(100% - 250px);
+  }
 }
 
 @media (max-width: 767px) {

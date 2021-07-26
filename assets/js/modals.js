@@ -1,12 +1,6 @@
-<<<<<<< Updated upstream
-//addEventListener on mouse click for opening modal on clas btn-modal
-document.addEventListener('click', function (e) {
-=======
 'use strict'
 
-var calcMonth = document.querySelector(".calendar__month");
-var addEventBtn = document.querySelector("#add-event");
-calcMonth.addEventListener("click", clickDate);
+calendarMain.addEventListener("click", clickDate);
 addEventBtn.addEventListener("click", clickDate);
 
 const addEvent = (e) => {
@@ -29,25 +23,40 @@ const showEventsList = (e) => {
   });
 }
 
+/**
+* Converts a day number to a string.
+*
+* @param {Number} dayIndex
+* @return {String} Returns day as string
+*/
+function dayOfWeekAsString(dayIndex) {
+  return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][dayIndex] || '';
+}
+
 function clickDate(e) {
 
   const el = e.target;
->>>>>>> Stashed changes
 
-  //check is the right element clicked
-  if (!e.target.matches('.btn--modal')) return;
-  else {
+  if (!el.matches(".btn--modal")) return null;
 
-    //select right modal from id-data
-    var modal = document.querySelectorAll('#' + e.target.dataset.id);
-    Array.prototype.forEach.call(modal, function (el) {
+  //get the day selected
+  dateSelected = el.dataset.id;
 
-      //add active class on modal
-      el.classList.add('active');
-    });
-  }
-});
+  //write in screen the events day week
+  writeDayWeek(dateSelected)
+  let todaysEvents = eventsNotes.filter(appointment => appointment.startDate == dateSelected);
+  renderEventNotes(todaysEvents, dateSelected);
 
+  //clear form inputs
+  document.querySelector(`#title`).value = '';
+  document.querySelector(`#description`).value = '';
+  (dateSelected) ? document.querySelector(`#startDate`).value = dateSelected : document.querySelector(`#startDate`).value = '';
+  document.querySelector(`#startTime`).value = '09:00';
+  (dateSelected) ? document.querySelector(`#endDate`).value = dateSelected : document.querySelector(`#endDate`).value = '';
+  document.querySelector(`#endTime`).value = '10:00';
+
+  addEvent(e);
+}
 
 //addEventListener on mouse click for closing modal on modal dark background
 document.addEventListener('click', function (e) {
@@ -56,7 +65,7 @@ document.addEventListener('click', function (e) {
   if (!e.target.matches('.modal')) return;
   else {
 
-    // if modal have do-not-close class it will not close it self on background click
+    //if modal have do-not-close class it will not close it self on background click
     if (e.target.classList.contains('do-not-close')) return;
     else {
 
@@ -93,3 +102,10 @@ document.addEventListener('click', function (e) {
     e.target.parentElement.parentElement.classList.remove('active');
   }
 });
+
+//close modal
+cancelModal.addEventListener('click', closeModal);
+
+function closeModal() {
+  document.getElementById('modal-example').classList.remove('active');
+};
