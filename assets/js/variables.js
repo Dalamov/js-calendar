@@ -8,7 +8,6 @@ var todayDay = pad(todayDate.getDate())
 var todayMonth = pad(todayDate.getMonth() + 1);
 var todayYear = todayDate.getFullYear();
 var today = todayYear + "-" + todayMonth + "-" + todayDay;
-
 let tdMonth = todayDate.getMonth();
 
 
