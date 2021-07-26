@@ -5,7 +5,7 @@
 .btn{
   display: flex;
   justify-content: center;
-  padding: 10px 5px;
+  padding: 10px 0px;
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
@@ -13,74 +13,37 @@
   transition: all 0.3s ease-in-out;
 }
 
-.btn--full_width{
-  width: 100%;
-  height: 40px;
+.btn--primary{
+  border: 1px solid black;
+  background-color: black;
+  color: white;
   border-radius: 20px;
+  height: 40px;
+  min-width: 100px;
 }
 
-.btn--black{
+.btn--secondary{
+  background-color: transparent;
+  padding: 10px 40px;
+  align-items: center;
   border: 1px solid black;
-  background-color: black;
-  color: white;
-}
-
-.btn--black--modal{
-  width: 20%;
-  border: 1px solid black;
-  background-color: black;
-  color: white;
-}
-
-.btn--red{
-  background-color: rgb(231, 97, 97);
-  color: #fff;
+  border-radius: 20px;
+  height: 36px;
+  width: 36px;
 }
 
 .btn--red:hover{
   background-color: rgb(224, 131, 131);
 }
 
-.btn--word:hover,
+.btn--secondary:hover,
 .btn--circle:hover{
   background-color: black;
   color: white;
 }
 
-.btn--add_type{
-  display: flex;
-  justify-content: center;
-}
-
-.btn--add_type [type="button"]{
-  width: 15em;
-  color: rgb(255, 255, 255);
-  background-color: black;
-  cursor: pointer;
-  width: 50%;
-}
-
-.modal__buttons button:hover{
-  border-color: rgb(129, 129, 129);
-}
-
-@media all and (max-width:30em){
-  .modal__buttons button{
-    display: block;
-    margin: 0.2em auto;
-  }
-}
-
 @media (max-width: 767px) {
   .btn{
     margin: 5px;
-  }
-}
-
-
-@media all and (max-width:30em){
-  .modal__buttons button{
-    display :block;
-    margin: 0.2em auto;
   }
 }

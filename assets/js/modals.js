@@ -28,6 +28,16 @@ const showEventsList = (e) => {
   });
 }
 
+/**
+* Converts a day number to a string.
+*
+* @param {Number} dayIndex
+* @return {String} Returns day as string
+*/
+function dayOfWeekAsString(dayIndex) {
+  return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][dayIndex] || '';
+}
+
 function clickDate(e) {
 
   const el = e.target;
@@ -37,13 +47,18 @@ function clickDate(e) {
   //get the day selected
   dateSelected = el.dataset.id;
 
+  //write in screen the events day week
+  writeDayWeek(dateSelected)
+  let todaysEvents = eventsNotes.filter(appointment => appointment.startDate == dateSelected);
+  renderEventNotes(todaysEvents, dateSelected);
+
   //clear form inputs
   document.querySelector(`#title`).value = '';
   document.querySelector(`#description`).value = '';
   (dateSelected) ? document.querySelector(`#startDate`).value = dateSelected : document.querySelector(`#startDate`).value = '';
-  document.querySelector(`#startTime`).value = '';
-  document.querySelector(`#endDate`).value = '';
-  document.querySelector(`#endTime`).value = '';
+  document.querySelector(`#startTime`).value = '09:00';
+  (dateSelected) ? document.querySelector(`#endDate`).value = dateSelected : document.querySelector(`#endDate`).value = '';
+  document.querySelector(`#endTime`).value = '10:00';
 
   addEvent(e);
 }

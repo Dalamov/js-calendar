@@ -20,7 +20,7 @@
     <main class="main">
         <button id='burger'>☰</button>
         <!-- Menu -->
-        <section class="menu border-right" id="menu-to-hide">
+        <section class="menu border-right" id="menu">
 
             <header class="menu__header border-bottom">
                 <h1 class="menu__title">Js Calendar</h1>
@@ -33,6 +33,12 @@
                         <label class="types__label">Dark mode</label>
                         <input class="switch" type="checkbox" id="toggle_classes" />
                     </li>
+                </ul>
+                <ul class="types__list">
+                    <!-- <li class="types__item justify-content-between border-bottom">
+                        <label class="types__label">Dark mode</label>
+                        <input class="switch" type="checkbox" id="toggle_classes" />
+                    </li> -->
                     <li class="types__item">
                         <div class="types__color bg--red"></div>
                         <label class="types__label">Meeting</label>
@@ -46,14 +52,14 @@
                         <label class="types__label">Coffe with</label>
                     </li>
                     <li class="types__item">
-                        <div class="types__color bg--orange"></div>
+                        <div class="types__color bg--yellow"></div>
                         <label class="types__label">Peer helping</label>
                     </li>
                 </ul>
             </main><!-- Types -->
 
-            <footer class="menu__footer btn btn--add_type">
-                <button id="add-event" class="btn btn--full_width btn--black btn--modal" data-id="modal-example">
+            <footer class="menu__footer">
+                <button id="add-event" class="btn btn--primary btn--modal w-100" data-id="modal-example">
                     Add event
                 </button>
             </footer>
@@ -64,17 +70,16 @@
         <section class="calendar">
 
             <header class="calendar__header border-bottom">
+                <div class="calendar__title w-100">
+                    <button class="burger" id='burger'>☰</button>
+                    <span id="month">January</span><span id="year">2021</span>
+                </div>
+
                 <!-- Nav -->
                 <nav class="nav">
                     <ul class="nav__list">
-                        <!-- <li class="nav__item">
-                            <button class="btn btn--burger">&#9776;</button>
-                        </li> -->
-                        <li class="nav__item nav__item--full">
-                            <span id="month">January</span><span id="year">2021</span>
-                        </li>
                         <li class="nav__item">
-                            <button class="btn btn--word">Today</button>
+                            <button class="btn btn--secondary">Today</button>
                         </li>
                         <li class="nav__item">
                             <button class="btn btn--circle" id="prev-month">&#60;</button>
@@ -173,13 +178,20 @@
                     </div>
                     <div class="modal__item">
                         <i class="fas fa-tasks"></i>
-                        <label class="modal__label">Task</label>
+                        <label class="modal__label">Event type</label>
+                        <select name="select" class="modal__select" id="type">
+                            <option value="Meetinga">Meeting</option>
+                            <option value="Call">Call</option>
+                            <option value="Coffee with">Coffee with</option>
+                            <option value="Peer Helping">Peer Helping</option>
+                        </select>
                     </div>
                     <div class="modal__item">
                         <i class="far fa-bell"></i>
                         <label class="modal__label">Reminder
                         </label>
                     </div>
+
                     <div class="modal__item">
                         <i class="fas fa-align-left"></i>
                         <input type="text" class="modal__input--text" id="description" name="description"
@@ -188,9 +200,8 @@
 
                     <!-- Modal footer -->
                     <div class="modal__footer">
-                        <input type="submit" value="Save" class="btn btn--full_width btn--black--modal"
-                            id="modalSave" />
-                        <button class="btn btn--full_width btn--black--modal" id="modalCancel">Cancel</button>
+                        <input type="submit" value="Save" class="btn btn--primary" id="modalSave" />
+                        <button class="btn btn--primary" id="modalCancel">Cancel</button>
                     </div><!-- Modal footer -->
                 </form><!-- Form -->
 
@@ -198,14 +209,13 @@
         </div>
     </div><!-- Modal -->
 
+    <script src='assets/js/utils.js'></script>
     <script src='assets/js/variables.js'></script>
     <script src='assets/js/modals.js'></script>
     <script src='assets/js/calendar.js'></script>
-    <script src='assets/js/help.js'></script>
-    <script src='assets/js/hamburger.js'></script>
-    <script src='assets/js/hidevent.js'></script>
     <script src='assets/js/events.js'></script>
     <script src='assets/js/validator.js'></script>
+    <script src='assets/js/burger.js'></script>
     <script src='assets/js/initialize.js'></script>
     
     

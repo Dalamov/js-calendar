@@ -4,10 +4,13 @@ const monthNames = ['January', 'Febrary', 'March', 'April', 'May', 'June', 'July
 
 //get the today date
 var todayDate = new Date();
-var todayDay = todayDate.getDate();
-var todayMonth = todayDate.getMonth();
+var todayDay = pad(todayDate.getDate())
+var todayMonth = pad(todayDate.getMonth() + 1);
 var todayYear = todayDate.getFullYear();
 var today = todayYear + "-" + todayMonth + "-" + todayDay;
+
+console.log(today)
+
 
 //get the current date
 const currentDate = new Date();
@@ -25,9 +28,12 @@ let nextMonthDOM = document.getElementById('next-month');
 prevMonthDOM.addEventListener('click', () => goToPrevMonth());
 nextMonthDOM.addEventListener('click', () => goToNextMonth());
 
-//events variables
-var eventsNotes = new Array();
+//get the eventsNotes in localStorage
+var eventsNotes = JSON.parse(localStorage.getItem('events'));
 var eventNote = {};
+
+//if not eventsNotes create empty array
+(!eventsNotes) ? eventsNotes = new Array() : null;
 
 const form = document.querySelector('.form');
 let eventsDay = document.getElementById('eventsDay');

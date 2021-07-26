@@ -1,0 +1,41 @@
+/**
+ * STATUS - DEFAULT
+ */
+
+ .darkMode {
+    background-color:#121212;
+    color: #FAFAFA;
+}
+
+.darkMode .nav__list{
+    background-color: #121212;   
+}
+
+.darkMode .calendar__week{
+    background-color: #121212;
+}
+
+.darkMode .calendar__day  {
+    background-color:#121212;
+    color: #FAFAFA;
+}
+
+.darkMode .calendar__today {
+    background-color: #121212;
+    color: #FAFAFA;    
+}
+
+.darkMode .btn{
+    background-color: #FAFAFA;
+    color: #121212;
+}
+
+.darkMode .event__message.event__message--alert{
+    background-color: #121212;
+    color: #FAFAFA;
+}   
+
+.darkMode .showMenu{
+    background-color: #121212;
+    color: #FAFAFA;
+} 

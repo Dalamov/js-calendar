@@ -5,7 +5,7 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: calc(100% - 500px);
   height: 100%;
 }
 
@@ -15,6 +15,15 @@
   max-height: 90px;
   display: flex;
   align-items: flex-end;
+}
+
+.calendar__title{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 20px 0;
 }
 
 .calendar__main{
@@ -41,7 +50,8 @@
 .calendar__date{
   text-align: center;
   border: 1px solid white;
-  padding: 5px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .calendar__dates {
@@ -50,6 +60,18 @@
 
 .calendar__date{
   margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calendar__plus{
+  visibility: hidden;
+}
+
+.calendar__date:hover .calendar__plus{
+  visibility: visible;
 }
 
 .calendar__date:hover:not(.calendar__prev){
@@ -65,6 +87,12 @@
 .calendar__prev{
   margin: 5px;
   color: gray;
+}
+
+@media (max-width: 991px) {
+  .calendar {
+    width: calc(100% - 250px);
+  }
 }
 
 @media (max-width: 767px) {
