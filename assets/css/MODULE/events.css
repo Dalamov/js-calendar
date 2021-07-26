@@ -35,22 +35,26 @@
   display: flex;
   border-bottom: 1px solid lightgray;
   align-self: center;
-  padding: 0 20px;
+  padding: 20px;
 }
 
 .event:hover{
   background-color: ghostwhite;
 }
 
-.event__type{
+.close__btn {
+  background-color:burlywood ;
+  border-radius: 50%;
+  height: 20px;
+}
+
+.event__color{
   height: 20px;
   width: 20px;
   border-radius: 4px;
   margin-right: 10px;
-  margin-top: 20px;
 }
 
-.event__title{}
 
 .event__time{
   font-weight: 400;
@@ -58,6 +62,15 @@
 
 .event__description{
   font-weight: 400;
+}
+
+.event__type{
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 6px 12px;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .event__message{

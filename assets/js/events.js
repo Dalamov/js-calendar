@@ -23,9 +23,9 @@ const writeEventsOfTheDay = (day) => {
 
     if (day == event.startDate) {
       eventsDay.innerHTML += `
-        <div class="event">
+        <div class="event" data-id="${event.id}">
           <div class="event__content">
-            <div class="event__type ${event__color}"></div>
+            <div class="event__color ${event__color}"></div>
             <p class="event__title">${event.title}</p>
             <p class="event__time">
               <span>${event.startTime}</span>
@@ -33,8 +33,9 @@ const writeEventsOfTheDay = (day) => {
               <span>${event.endTime}</span>
             </p>
             <p class="event__description">${event.description}</p>
-            <p class="event__typeName">${event.type}</p>
+            <label class="event__type">${event.type}</label>
           </div>
+          <button class="close__btn"> X </button>
         </div>
       `;
     }
@@ -54,12 +55,11 @@ function renderEventNotes(todaysNotes, selectedDate) {
   eventsDay.innerHTML = ``
   todaysNotes.forEach(event => {
     let event__color = getEventTypeColor(event);
-
     if (selectedDate == event.startDate) {
       eventsDay.innerHTML += `
-      <div class="event">
+      <div class="event" data-id="${event.id}">
         <div class="event__content">
-        <div class="event__type ${event__color}"></div>
+        <div class="event__color ${event__color}"></div>
           <p class="event__title">${event.title}</p>
           <p class="event__time">
             <span>${event.startTime}</span>
@@ -67,8 +67,9 @@ function renderEventNotes(todaysNotes, selectedDate) {
             <span>${event.endTime}</span>
           </p>
           <p class="event__description">${event.description}</p>
-          <p class="event__typeName">${event.type}</p>
+          <label class="event__type">${event.type}</label>
         </div>
+        <button class="close__btn"> X </button>
       </div>
     `;
     }
@@ -108,7 +109,7 @@ const getEventTypeColor = (event) => {
     case "Coffee with":
       event__color = "bg--green";
       break;
-    case "Peer helping":
+    case "Peer Helping":
       event__color = "bg--yellow";
       break;
     default:
@@ -118,3 +119,35 @@ const getEventTypeColor = (event) => {
 
   return event__color;
 }
+
+
+document.querySelector("#eventsDay").addEventListener("click", deleteEvent);
+
+function deleteEvent(e) {
+
+  const el = e.target;
+
+  if (!el.matches(".close__btn")) return null;
+
+  //get the event DOM
+  const eventDOM = el.parentElement;
+
+  //get the data id of the event
+  let eventId = eventDOM.dataset.id;
+
+  //find and remove the event by id in the events list
+  eventsNotes = eventsNotes.filter((event) => event.id != eventId);
+
+  //convert EventsNotes to string
+  let eventsString = JSON.stringify(eventsNotes);
+  
+  //save the events list in localStorage
+  (() => localStorage.setItem("events", eventsString))();
+
+  //show the event list of the day
+  writeEventsOfTheDay(dateSelected);
+
+}
+
+
+
