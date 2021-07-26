@@ -10,8 +10,6 @@ var todayYear = todayDate.getFullYear();
 var today = todayYear + "-" + todayMonth + "-" + todayDay;
 let tdMonth = todayDate.getMonth();
 
-
-
 //get the current date
 const currentDate = new Date();
 const currentDay = currentDate.getDate();
@@ -36,6 +34,13 @@ var eventNote = {};
 
 //if not eventsNotes create empty array
 (!eventsNotes) ? eventsNotes = new Array() : null;
+
+//get the reminders in localStorage
+var reminders = JSON.parse(localStorage.getItem('reminders'));
+var reminderNote = {};
+
+//if not eventsNotes create empty array
+(!reminders) ? reminders = new Array() : null;
 
 const form = document.querySelector('.form');
 let eventsDay = document.getElementById('eventsDay');
