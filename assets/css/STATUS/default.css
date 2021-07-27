@@ -5,7 +5,13 @@
  .darkMode {
     background-color:#121212;
     color: #FAFAFA;
-}
+ }
+
+ .darkMode .main{
+    background-color:#121212;
+    color: #FAFAFA;
+ }
+
 
 .darkMode .nav__list{
     background-color: #121212;   
@@ -30,6 +36,11 @@
     color: #121212;
 }
 
+.darkMode .section.events{
+    background-color: #FAFAFA;
+    color: #121212;
+}
+
 .darkMode .event__message.event__message--alert{
     background-color: #121212;
     color: #FAFAFA;
@@ -39,3 +50,10 @@
     background-color: #121212;
     color: #FAFAFA;
 } 
+
+.darkMode menu border-right{
+    background-color: #121212;
+    color: #FAFAFA; 
+}
+
+
