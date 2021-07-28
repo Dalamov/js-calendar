@@ -1,15 +1,22 @@
 'use strict';
 
-const writeMonth = (month) => {
+/**
+ * Print on screen the month calendar.
+ *
+ * @param {Number} month
+ */
+const renderMonth = (month) => {
 
+	//print the days before the current month starts
 	for (let i = startDay(); i > 0; i--) {
 		dates.innerHTML += `
-            <div class="calendar__date calendar__prev">
-                ${getTotalDays(currentMonth - 1) - (i - 1)}
-            </div>
-        `;
+			<div class="calendar__date calendar__prev">
+				<span class="event__number">${getTotalDays(currentMonth - 1) - (i - 1)}</span>
+			</div>
+		`;
 	}
 
+	//print all the days of the current month
 	for (let day = 1; day <= getTotalDays(month); day++) {
 		let dayId = pad(day);
 		let monthId = pad(month + 1);
@@ -21,17 +28,19 @@ const writeMonth = (month) => {
 			todayYear === currentYear
 		) {
 			dates.innerHTML += `
-					<button class="btn btn--modal calendar__date calendar__today" data-id="${yearId}-${monthId}-${dayId}">
-							<span class="">${day}</span>
-							<span class="calendar__plus">+</span>
-					</button>
+				<button class="btn btn--modal calendar__date calendar__today" data-id="${yearId}-${monthId}-${dayId}">
+					<span class="event__number">${day}</span>
+					<ul class="event__dots"></ul>
+					<span class="calendar__plus">+</span>
+				</button>
 			`;
 		} else {
 			dates.innerHTML += `
-					<button class="btn btn--modal calendar__date" data-id="${yearId}-${monthId}-${dayId}">
-							<span class="">${day}</span>
-							<span class="calendar__plus">+</span>
-					</button>
+				<button class="btn btn--modal calendar__date" data-id="${yearId}-${monthId}-${dayId}">
+					<span class="event__number">${day}</span>
+					<ul class="event__dots"></ul>
+					<span class="calendar__plus">+</span>
+				</button>
 			`;
 		}
 	}
@@ -39,6 +48,12 @@ const writeMonth = (month) => {
 	addDotsToCalendar();
 };
 
+/**
+ * Get total days in a month
+ *
+ * @param {Number} month
+ * @return {Number} Returns days as number
+ */
 const getTotalDays = (month) => {
 	if (month === -1) month = 11;
 
@@ -59,6 +74,11 @@ const getTotalDays = (month) => {
 	}
 };
 
+/**
+ * Check if a year is leap or not
+ *
+ * @return {Boolean} Returns leap as boolean
+ */
 const isLeap = () => {
 	return (
 		(currentYear % 100 !== 0 && currentYear % 4 === 0) ||
@@ -66,11 +86,19 @@ const isLeap = () => {
 	);
 };
 
+/**
+ * Get the day of the week that the month starts
+ *
+ * @return {Number} Returns day as number
+ */
 const startDay = () => {
 	let start = new Date(currentYear, currentMonth, 1);
 	return start.getDay() - 1 === -1 ? 6 : start.getDay() - 1;
 };
 
+/**
+ * Print prev month in the calendar
+ */
 const goToPrevMonth = () => {
 	if (currentMonth !== 0) {
 		currentMonth--;
@@ -82,6 +110,9 @@ const goToPrevMonth = () => {
 	setNewDate();
 };
 
+/**
+ * Print next month in the calendar
+ */
 const goToNextMonth = () => {
 	if (currentMonth !== 11) {
 		currentMonth++;
@@ -93,66 +124,88 @@ const goToNextMonth = () => {
 	setNewDate();
 };
 
+/**
+ * Print today month in the calendar
+ */
 const goToTodayMonth = () => {
 	if (currentMonth !== tdMonth || currentYear !== todayYear) {
 		currentMonth = tdMonth;
 		currentYear = todayYear;
 	}
 	setNewDate();
-	writeEventsOfTheDay(today);
-	writeDayWeek(today);
-};
-
-const setNewDate = () => {
-	currentDate.setFullYear(currentYear, currentMonth, currentDay);
-	month.textContent = monthNames[currentMonth];
-	year.textContent = currentYear.toString();
-	dates.textContent = '';
-	writeMonth(currentMonth);
+	renderEventsOfTheDay(today);
+	renderDayWeek(today);
 };
 
 /**
- * Generate colored points in calendar days depending on the event type
+ *	Update and print the current date in the calendar screen
  */
-const addDotToDate = (element, idDateSelected) => {
+const setNewDate = () => {
+	//set the new current date
+	currentDate.setFullYear(currentYear, currentMonth, currentDay);
 
-	// create html of the dot
-	let dot = document.createElement('div');
+	//print date variables in the DOM
+	month.textContent = monthNames[currentMonth];
+	year.textContent = currentYear.toString();
+
+	//clear the dates element in the DOM
+	dates.textContent = '';
+
+	//print the current dates month
+	renderMonth(currentMonth);
+};
+
+/**
+ * Add colored dots on the calendar for the days that you have events
+ */
+const addDotsToCalendar = () => {
+
+	//get sort events
+	let eventsDots = eventsNotes.sort((a, b) => b.startDate - a.startDate);
+
+	//get the calendar dates
+	let calendarDates = document.querySelectorAll(".calendar__date");
+
+	//loop every calendar date
+	calendarDates.forEach((el) => {
+
+		//get the day selected
+		const idDateSelected = el.dataset.id;
+
+		//if it doesn't have id out of the loop
+		if (!idDateSelected) return null;
+
+		//filter the events dots and save in eventsToday array
+		const eventsToday = eventsDots.filter(event => event.startDate == idDateSelected);
+
+		//create dots for every event day
+		eventsToday.forEach((eventToday) => addDotToDate(eventToday, idDateSelected));
+	});
+}
+
+/**
+ * Generate colored dot in calendar days depending on the event type
+ *
+ * @param {Object} eventToday
+ * @param {String} idDateSelected
+ */
+const addDotToDate = (eventToday, idDateSelected) => {
+
+	//create html of the dot
+	let dot = document.createElement('li');
 
 	//add styles class dot
 	dot.classList.add('event__dot');
 
 	//get the color type of the events
-	let bg_color = getEventTypeColor(element);
+	let bg_color = getEventTypeColor(eventToday);
 
 	//add bg color to the dot
 	dot.classList.add(`${bg_color}`);
 
-	//get the day selected
-	let eventDOM = document.querySelector(`[data-id='${idDateSelected}']`);
+	//get dotList of the day selected
+	let dotList = document.querySelector(`[data-id='${idDateSelected}'] .event__dots`);
 
-	//add dots into eventNote
-	eventDOM.appendChild(dot);
-}
-
-const addDotsToCalendar = () => {
-
-	//get sort events
-	let eventsDots = eventsNotes.sort((a, b) => b.startString - a.startString);
-
-	let calendarDates = document.querySelectorAll(".calendar__date");
-
-	calendarDates.forEach((el) => {
-		
-		//get the day selected
-		const idDateSelected = el.dataset.id;
-
-		if(!idDateSelected) return null;
-		
-		//find the event dot
-		const eventsToday = eventsDots.filter(event => event.startString == idDateSelected);
-
-		//
-		eventsToday.forEach((element) => addDotToDate(element, idDateSelected));
-	});
+	//add dots into the event dot list
+	dotList.appendChild(dot);
 }

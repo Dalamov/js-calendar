@@ -2,22 +2,24 @@
 
 /**
  * Validate on submit
+ *
+ * @param {Object} e event of the submit form
  */
 function validateOnSubmit(e) {
   e.preventDefault();
 
-  //clear eventNote object
-  eventNote = {};
+  //declare eventNote as object
+  let eventNote = {};
 
-  //set the id in the eventNote object
+  //set the timestamp as id in the eventNote object
   eventNote[`id`] = new Date().getTime();
 
   //set the values in the eventNote object
   eventNote[`title`] = document.querySelector(`#title`).value;
   eventNote[`description`] = document.querySelector(`#description`).value;
-  eventNote[`startString`] = document.querySelector(`#startString`).value;
+  eventNote[`startDate`] = document.querySelector(`#startDate`).value;
   eventNote[`startTime`] = document.querySelector(`#startTime`).value;
-  eventNote[`endString`] = document.querySelector(`#endString`).value;
+  eventNote[`endDate`] = document.querySelector(`#endDate`).value;
   eventNote[`endTime`] = document.querySelector(`#endTime`).value;
   eventNote[`type`] = document.querySelector(`#type`).value;
   eventNote[`reminder`] = document.querySelector(`#reminder`).value;
@@ -37,17 +39,15 @@ function validateOnSubmit(e) {
   //close the modal
   closeModal();
 
-  //add dot to the calendar
-  // addDotsToCalendar();
-
   //write the event
-  writeEventsOfTheDay(dateSelected);
+  renderEventsOfTheDay(dateSelected);
 
-  //clean month dates
+  //clear the month dates of the DOM
   dates.textContent = '';
 
   //reload month calendar
-  writeMonth(currentMonth);
+  renderMonth(currentMonth);
 }
 
+//add event listener to the form modal save button
 form.addEventListener('submit', validateOnSubmit);

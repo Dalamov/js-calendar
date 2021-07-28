@@ -1,12 +1,10 @@
 'use strict';
 
 //initialize calendar
-writeMonth(currentMonth);
+renderMonth(currentMonth);
 setNewDate();
-writeEventsOfTheDay(today);
-writeDayWeek(today);
-// addDotsToCalendar();
+renderEventsOfTheDay(today);
+renderDayWeek(today);
 
 //initialize reminders
 activateReminders(reminders)
-setInterval(function () { activateReminders(reminders) }, 10 * 1000);
